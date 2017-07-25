@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="技术宅の二次元">
 <meta property="og:description" content="刚入手了服务器，安装了环境．在composer安装完成进入项目执行composer install的时候报错，我的服务器内存是1G． 原因由于虚拟机分配的内存太少，而导致没有可用内存打开文件1free  -m  结果如下: 1234total used free shared buffers cachedMem: 2048 357 1690 0 0 237-/+ buffers/cache: 11">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-07-25T07:02:52.969Z">
+<meta property="og:updated_time" content="2017-07-25T07:26:04.521Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="composer报proc_open()错误解决方法">
 <meta name="twitter:description" content="刚入手了服务器，安装了环境．在composer安装完成进入项目执行composer install的时候报错，我的服务器内存是1G． 原因由于虚拟机分配的内存太少，而导致没有可用内存打开文件1free  -m  结果如下: 1234total used free shared buffers cachedMem: 2048 357 1690 0 0 237-/+ buffers/cache: 11">
@@ -205,6 +205,16 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
           </a>
         </li>
       
@@ -326,6 +336,17 @@
 
           
           
+             <span id="/2017/07/21/composer报proc-open-错误解决方法/" class="leancloud_visitors" data-flag-title="composer报proc_open()错误解决方法">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
 
           
 
@@ -350,9 +371,10 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">total used free shared buffers cached</div><div class="line">Mem: 2048 357 1690 0 0 237</div><div class="line">-/+ buffers/cache: 119 1928</div><div class="line">Swap: 0 0 0</div></pre></td></tr></table></figure>
 </li>
 <li><p>解决方法:<br>1 加大虚拟机的内存<br>2 在Linux下的解决方案：<br>3 开启swap：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">/bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=1024</div><div class="line">/sbin/mkswap /var/swap.1</div><div class="line">/sbin/swapon /var/swap.1</div></pre></td></tr></table></figure></li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">/bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=1024</div><div class="line">/sbin/mkswap /var/swap.1</div><div class="line">/sbin/swapon /var/swap.1</div></pre></td></tr></table></figure>
+</li>
 </ul>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd /var/www</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -667,6 +689,113 @@
 
 
   
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("HEbWOzfVV9Knw8Frhv1zvrh1-gzGzoHsz", "wg4RJuleiMUUtI6PJvn4CDkG");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
 
   
 
