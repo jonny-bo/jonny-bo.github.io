@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="技术宅の二次元">
 <meta property="og:description" content="刚入手了服务器，安装了环境．在composer安装完成进入项目执行composer install的时候报错，我的服务器内存是1G． 原因由于虚拟机分配的内存太少，而导致没有可用内存打开文件1free  -m  结果如下: 1234total used free shared buffers cachedMem: 2048 357 1690 0 0 237-/+ buffers/cache: 11">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-07-21T04:21:27.922Z">
+<meta property="og:updated_time" content="2017-07-21T10:12:35.226Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="composer报proc_open()错误解决方法">
 <meta name="twitter:description" content="刚入手了服务器，安装了环境．在composer安装完成进入项目执行composer install的时候报错，我的服务器内存是1G． 原因由于虚拟机分配的内存太少，而导致没有可用内存打开文件1free  -m  结果如下: 1234total used free shared buffers cachedMem: 2048 357 1690 0 0 237-/+ buffers/cache: 11">
@@ -350,9 +350,24 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">total used free shared buffers cached</div><div class="line">Mem: 2048 357 1690 0 0 237</div><div class="line">-/+ buffers/cache: 119 1928</div><div class="line">Swap: 0 0 0</div></pre></td></tr></table></figure>
 </li>
 <li><p>解决方法:<br>1 加大虚拟机的内存<br>2 在Linux下的解决方案：<br>3 开启swap：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">/bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=1024</div><div class="line">/sbin/mkswap /var/swap.1</div><div class="line">/sbin/swapon /var/swap.1</div></pre></td></tr></table></figure></li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">/bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=1024</div><div class="line">/sbin/mkswap /var/swap.1</div><div class="line">/sbin/swapon /var/swap.1</div></pre></td></tr></table></figure>
+</li>
 </ul>
-
+<p><div id="container"></div></p>
+<p><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"></p>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+  var gitment = new Gitment({
+    id: '页面 ID', // 可选。默认为 location.href
+    owner: '你的 GitHub ID', // 可以是你的GitHub用户名，也可以是github id
+    repo: '存储评论的 github repo',
+    oauth: {
+      client_id: '你的 client id',
+      client_secret: '你的 client secret',
+    },
+  })
+  gitment.render('container')
+</script>
       
     </div>
 
