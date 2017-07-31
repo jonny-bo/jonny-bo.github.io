@@ -379,6 +379,21 @@
 </li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd /var/www</div></pre></td></tr></table></figure>
+<p><div id="container"></div></p>
+<p><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"></p>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+  var gitment = new Gitment({
+    id: '页面 ID', // 可选。默认为 location.href
+    owner: '17173969', // 可以是你的GitHub用户名，也可以是github id
+    repo: '存储评论的 github repo',
+    oauth: {
+      client_id: '1c77e0e89cfbef9d889d',
+      client_secret: 'b1b0d59ca8a7915cffa91f574f3a4ad720086bbd',
+    },
+  })
+  gitment.render('container')
+</script>
           
         
       
@@ -658,6 +673,8 @@
 
 
   
+
+
 
 
 
