@@ -267,6 +267,168 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/10/symfony/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jonny">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/jonny.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="技术宅の二次元">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/10/symfony/" itemprop="url">symfony</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-10T14:40:08+08:00">
+                2017-08-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/08/10/symfony/" class="leancloud_visitors" data-flag-title="symfony">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="resful-api-bundle-for-symfony"><a href="#resful-api-bundle-for-symfony" class="headerlink" title="resful api bundle for symfony"></a>resful api bundle for symfony</h1><h2 id="Method-design"><a href="#Method-design" class="headerlink" title="Method design:"></a>Method design:</h2><ul>
+<li><code>index</code>: list of models</li>
+<li><code>view</code>: return the details of a model</li>
+<li><code>create</code>: create a new model</li>
+<li><code>update</code>: update an existing model</li>
+<li><code>delete</code>: delete an existing model</li>
+<li><code>options</code>: return the allowed HTTP methods<h2 id="Endpoints"><a href="#Endpoints" class="headerlink" title="Endpoints:"></a>Endpoints:</h2></li>
+</ul>
+<p>An Endpoint is a URL within your API which points to a specific Resource or a Collection of Resources.<br>If you were building a fictional API to represent several different Zoo’s, each containing many Animals (with an animal belonging to exactly one Zoo), employees (who can work at multiple zoos) and keeping track of the species of each animal, you might have the following endpoints:</p>
+<ul>
+<li><a href="https://api.example.com/v1/zoos" target="_blank" rel="external">https://api.example.com/v1/zoos</a></li>
+<li><a href="https://api.example.com/v1/animals" target="_blank" rel="external">https://api.example.com/v1/animals</a></li>
+<li><a href="https://api.example.com/v1/animal_types" target="_blank" rel="external">https://api.example.com/v1/animal_types</a></li>
+<li><a href="https://api.example.com/v1/employees" target="_blank" rel="external">https://api.example.com/v1/employees</a></li>
+</ul>
+<p>When referring to what each endpoint can do, you’ll want to list valid HTTP Verb and Endpoint combinations. For example, here’s a semi-comprehensive list of actions one can perform with our fictional API. Notice that I’ve preceded each endpoint with the HTTP Verb, as this is the same notation used within an HTTP Request header</p>
+<ul>
+<li><code>GET /zoos</code>: List all Zoos (ID and Name, not too much detail)</li>
+<li><code>POST /zoos</code>: Create a new Zoo</li>
+<li><code>GET /zoos/ZID</code>: Retrieve an entire Zoo object</li>
+<li><code>PUT /zoos/ZID</code>: Update a Zoo (entire object)</li>
+<li><code>PATCH /zoos/ZID</code>: Update a Zoo (partial object)</li>
+<li><code>DELETE /zoos/ZID</code>: Delete a Zoo</li>
+<li><code>GET /zoos/ZID/animals</code>: Retrieve a listing of Animals (ID and Name).</li>
+<li><code>GET /animals</code>: List all Animals (ID and Name).</li>
+<li><code>POST /animals</code>: Create a new Animal</li>
+<li><code>GET /animals/AID</code>: Retrieve an Animal object</li>
+<li><code>PUT /animals/AID</code>: Update an Animal (entire object)</li>
+<li><code>PATCH /animals/AID</code>: Update an Animal (partial object)</li>
+<li><code>GET /animal_types</code>: Retrieve a listing (ID and Name) of all Animal Types</li>
+<li><code>GET /animal_types/ATID</code>: Retrieve an entire Animal Type object</li>
+<li><code>GET /employees</code>: Retrieve an entire list of Employees</li>
+<li><code>GET /employees/EID</code>: Retreive a specific Employee</li>
+<li><code>GET /zoos/ZID/employees</code>: Retrieve a listing of Employees (ID and Name) who work at this Zoo</li>
+<li><code>POST /employees</code>: Create a new Employee</li>
+<li><code>POST /zoos/ZID/employees</code>: Hire an Employee at a specific Zoo</li>
+<li><code>DELETE /zoos/ZID/employees/EID</code>: Fire an Employee from a specific Zoo</li>
+</ul>
+<h2 id="Resourse"><a href="#Resourse" class="headerlink" title="Resourse"></a>Resourse</h2><p><code>GET: api/v2/users/1</code>   —&gt;  <code>UsersResourse:view</code>  —&gt;  <code>return json {user}</code><br><code>POST: api/v2/users/1</code>   —&gt;  <code>UsersResourse:update</code>  —&gt;  <code>return jsonEndpoints {user}</code></p>
+<h2 id="DELETE-api-v2-users-1-—-gt-UsersResourse-delete-—-gt-return-json-bool"><a href="#DELETE-api-v2-users-1-—-gt-UsersResourse-delete-—-gt-return-json-bool" class="headerlink" title="DELETE: api/v2/users/1   —&gt;  UsersResourse:delete  —&gt;  return json {bool}"></a><code>DELETE: api/v2/users/1</code>   —&gt;  <code>UsersResourse:delete</code>  —&gt;  <code>return json {bool}</code></h2><p><code>GET: api/v2/users</code>   —&gt;  <code>UsersResourse:index</code>  —&gt;  <code>return json {userList}</code><br><code>POST: api/v2/users</code>   —&gt;  <code>UsersResourse:create</code>  —&gt;  <code>return json {user}</code><br><code>OPTIONS: api/v2/users</code> —&gt; <code>UsersResourse:options</code> —&gt;  <code>return json {options}</code></p>
+<h2 id="PathParse"><a href="#PathParse" class="headerlink" title="PathParse"></a>PathParse</h2>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/21/composer报proc-open-错误解决方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -473,7 +635,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
