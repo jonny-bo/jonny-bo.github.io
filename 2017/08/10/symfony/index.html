@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="技术宅の二次元">
 <meta property="og:description" content="resful api bundle for symfonyMethod design: index: list of models view: return the details of a model create: create a new model update: update an existing model delete: delete an existing model optio">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-10T06:42:07.185Z">
+<meta property="og:updated_time" content="2017-08-10T06:43:51.089Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="symfony">
 <meta name="twitter:description" content="resful api bundle for symfonyMethod design: index: list of models view: return the details of a model create: create a new model update: update an existing model delete: delete an existing model optio">
@@ -348,9 +348,9 @@
 <li><code>create</code>: create a new model</li>
 <li><code>update</code>: update an existing model</li>
 <li><code>delete</code>: delete an existing model</li>
-<li><code>options</code>: return the allowed HTTP methods<h2 id="Endpoints"><a href="#Endpoints" class="headerlink" title="Endpoints:"></a>Endpoints:</h2></li>
+<li><code>options</code>: return the allowed HTTP methods</li>
 </ul>
-<p>An Endpoint is a URL within your API which points to a specific Resource or a Collection of Resources.<br>If you were building a fictional API to represent several different Zoo’s, each containing many Animals (with an animal belonging to exactly one Zoo), employees (who can work at multiple zoos) and keeping track of the species of each animal, you might have the following endpoints:</p>
+<h2 id="Endpoints"><a href="#Endpoints" class="headerlink" title="Endpoints:"></a>Endpoints:</h2><p>An Endpoint is a URL within your API which points to a specific Resource or a Collection of Resources.<br>If you were building a fictional API to represent several different Zoo’s, each containing many Animals (with an animal belonging to exactly one Zoo), employees (who can work at multiple zoos) and keeping track of the species of each animal, you might have the following endpoints:</p>
 <ul>
 <li><a href="https://api.example.com/v1/zoos" target="_blank" rel="external">https://api.example.com/v1/zoos</a></li>
 <li><a href="https://api.example.com/v1/animals" target="_blank" rel="external">https://api.example.com/v1/animals</a></li>
@@ -382,7 +382,21 @@
 </ul>
 <h2 id="Resourse"><a href="#Resourse" class="headerlink" title="Resourse"></a>Resourse</h2><p><code>GET: api/v2/users/1</code>   —&gt;  <code>UsersResourse:view</code>  —&gt;  <code>return json {user}</code><br><code>POST: api/v2/users/1</code>   —&gt;  <code>UsersResourse:update</code>  —&gt;  <code>return jsonEndpoints {user}</code></p>
 <h2 id="DELETE-api-v2-users-1-—-gt-UsersResourse-delete-—-gt-return-json-bool"><a href="#DELETE-api-v2-users-1-—-gt-UsersResourse-delete-—-gt-return-json-bool" class="headerlink" title="DELETE: api/v2/users/1   —&gt;  UsersResourse:delete  —&gt;  return json {bool}"></a><code>DELETE: api/v2/users/1</code>   —&gt;  <code>UsersResourse:delete</code>  —&gt;  <code>return json {bool}</code></h2><p><code>GET: api/v2/users</code>   —&gt;  <code>UsersResourse:index</code>  —&gt;  <code>return json {userList}</code><br><code>POST: api/v2/users</code>   —&gt;  <code>UsersResourse:create</code>  —&gt;  <code>return json {user}</code><br><code>OPTIONS: api/v2/users</code> —&gt; <code>UsersResourse:options</code> —&gt;  <code>return json {options}</code></p>
-<h2 id="PathParse"><a href="#PathParse" class="headerlink" title="PathParse"></a>PathParse</h2>
+<h2 id="PathParse"><a href="#PathParse" class="headerlink" title="PathParse"></a>PathParse</h2><p><div id="container"></div></p>
+<p><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"></p>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+  var gitment = new Gitment({
+    id: '页面 ID', // 可选。默认为 location.href
+    owner: 'jonny-bo', // 可以是你的GitHub用户名，也可以是github id
+    repo: 'jonny-bo.github.io',
+    oauth: {
+      client_id: '1c77e0e89cfbef9d889d',
+      client_secret: 'b1b0d59ca8a7915cffa91f574f3a4ad720086bbd',
+    },
+  })
+  gitment.render('container')
+</script>
       
     </div>
 
