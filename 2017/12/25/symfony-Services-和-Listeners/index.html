@@ -93,16 +93,17 @@
 
 
 
-<meta name="description" content="jonny&amp;波波">
-<meta property="og:type" content="website">
-<meta property="og:title" content="技术宅の二次元">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="symfony学习日常第一章章节介绍本次学习主要是研究symfony的Services 和 Listeners讨论基于服务和侦听器的基础。如何在symfony中拓展和使用。 Services服务Symfony2框架是基于服务为基础搭建的，框架自身已经预定义了大概200多个服务，通过控制台命令：app/console container:debug　查看被定义的服务。app/console cont">
+<meta property="og:type" content="article">
+<meta property="og:title" content="symfony Services 和 Listeners">
+<meta property="og:url" content="http://yoursite.com/2017/12/25/symfony-Services-和-Listeners/index.html">
 <meta property="og:site_name" content="技术宅の二次元">
-<meta property="og:description" content="jonny&amp;波波">
+<meta property="og:description" content="symfony学习日常第一章章节介绍本次学习主要是研究symfony的Services 和 Listeners讨论基于服务和侦听器的基础。如何在symfony中拓展和使用。 Services服务Symfony2框架是基于服务为基础搭建的，框架自身已经预定义了大概200多个服务，通过控制台命令：app/console container:debug　查看被定义的服务。app/console cont">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-12-25T09:12:12.459Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="技术宅の二次元">
-<meta name="twitter:description" content="jonny&amp;波波">
+<meta name="twitter:title" content="symfony Services 和 Listeners">
+<meta name="twitter:description" content="symfony学习日常第一章章节介绍本次学习主要是研究symfony的Services 和 Listeners讨论基于服务和侦听器的基础。如何在symfony中拓展和使用。 Services服务Symfony2框架是基于服务为基础搭建的，框架自身已经预定义了大概200多个服务，通过控制台命令：app/console container:debug　查看被定义的服务。app/console cont">
 
 
 
@@ -130,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/12/25/symfony-Services-和-Listeners/"/>
 
 
 
 
 
-  <title>技术宅の二次元</title>
+  <title>symfony Services 和 Listeners | 技术宅の二次元</title>
   
 
 
@@ -161,9 +162,7 @@
     
   
 
-  <div class="container sidebar-position-right 
-   page-home 
- ">
+  <div class="container sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -256,9 +255,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -284,9 +283,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/25/symfony-Services-和-Listeners/" itemprop="url">symfony Services 和 Listeners</a></h1>
+          <h1 class="post-title" itemprop="name headline">symfony Services 和 Listeners</h1>
         
 
         <div class="post-meta">
@@ -344,9 +341,7 @@
       
 
       
-        
-          
-            <h1 id="symfony学习日常第一章"><a href="#symfony学习日常第一章" class="headerlink" title="symfony学习日常第一章"></a>symfony学习日常第一章</h1><h2 id="章节介绍"><a href="#章节介绍" class="headerlink" title="章节介绍"></a>章节介绍</h2><p>本次学习主要是研究symfony的Services 和 Listeners讨论基于服务和侦听器的基础。<br>如何在symfony中拓展和使用。</p>
+        <h1 id="symfony学习日常第一章"><a href="#symfony学习日常第一章" class="headerlink" title="symfony学习日常第一章"></a>symfony学习日常第一章</h1><h2 id="章节介绍"><a href="#章节介绍" class="headerlink" title="章节介绍"></a>章节介绍</h2><p>本次学习主要是研究symfony的Services 和 Listeners讨论基于服务和侦听器的基础。<br>如何在symfony中拓展和使用。</p>
 <h2 id="Services服务"><a href="#Services服务" class="headerlink" title="Services服务"></a>Services服务</h2><p>Symfony2框架是基于服务为基础搭建的，框架自身已经预定义了大概200多个服务，通过控制台命令：<code>app/console container:debug</code>　查看被定义的服务。<code>app/console container:debug　&lt;service_name&gt;</code>来查看定义服务的具体信息。</p>
 <p>服务只是给定类的特定实例，例如当你在控制器中访问<code>$this-&gt;get(&#39;doctrine &#39;)</code>时，就能得到一个<code>EntityManager</code>类的一个实例，而你不必自己创建这个实例。实际上要得到这个<code>EntityManager</code>类的实例并不简单，通常我们实例化一个是通过<code>new EntityManager(&lt;require_tag...&gt;);</code>来得到的，这里在实例化对象可能需要更多的参数，需要连接到数据库，<br>其他一些配置，等等。通过service服务容器管理我们可以减少各个对象之间的依赖关系，让服务容器去把类实例化并且把实例化需要的对象或者参数也注入进去。</p>
 <p>（关于容器如何解决依赖，如何得到类的实例可以去了解一下<code>依赖注入，控制反转</code>等概念，还有一个简单的php容器<code>pimple</code>可以去看看．）</p>
@@ -430,20 +425,27 @@
 <li>kernel.exception：此事件发生在框架捕获了一个异常被触发。</li>
 </ul>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <div>
+      
+        
+
       
     </div>
 
@@ -451,367 +453,38 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/10/symfony/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="jonny">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/jonny.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="技术宅の二次元">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/10/symfony/" itemprop="url">symfony</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-10T14:40:08+08:00">
-                2017-08-10
-              </time>
+              <a href="/2017/08/10/symfony/" rel="next" title="symfony">
+                <i class="fa fa-chevron-left"></i> symfony
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/08/10/symfony/" class="leancloud_visitors" data-flag-title="symfony">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <h1 id="resful-api-bundle-for-symfony"><a href="#resful-api-bundle-for-symfony" class="headerlink" title="resful api bundle for symfony"></a>resful api bundle for symfony</h1><h2 id="Method-design"><a href="#Method-design" class="headerlink" title="Method design:"></a>Method design:</h2><ul>
-<li><code>index</code>: list of models</li>
-<li><code>view</code>: return the details of a model</li>
-<li><code>create</code>: create a new model</li>
-<li><code>update</code>: update an existing model</li>
-<li><code>delete</code>: delete an existing model</li>
-<li><code>options</code>: return the allowed HTTP methods</li>
-</ul>
-<h2 id="Endpoints"><a href="#Endpoints" class="headerlink" title="Endpoints:"></a>Endpoints:</h2><p>An Endpoint is a URL within your API which points to a specific Resource or a Collection of Resources.<br>If you were building a fictional API to represent several different Zoo’s, each containing many Animals (with an animal belonging to exactly one Zoo), employees (who can work at multiple zoos) and keeping track of the species of each animal, you might have the following endpoints:</p>
-<ul>
-<li><a href="https://api.example.com/v1/zoos" target="_blank" rel="external">https://api.example.com/v1/zoos</a></li>
-<li><a href="https://api.example.com/v1/animals" target="_blank" rel="external">https://api.example.com/v1/animals</a></li>
-<li><a href="https://api.example.com/v1/animal_types" target="_blank" rel="external">https://api.example.com/v1/animal_types</a></li>
-<li><a href="https://api.example.com/v1/employees" target="_blank" rel="external">https://api.example.com/v1/employees</a></li>
-</ul>
-<p>When referring to what each endpoint can do, you’ll want to list valid HTTP Verb and Endpoint combinations. For example, here’s a semi-comprehensive list of actions one can perform with our fictional API. Notice that I’ve preceded each endpoint with the HTTP Verb, as this is the same notation used within an HTTP Request header</p>
-<ul>
-<li><code>GET /zoos</code>: List all Zoos (ID and Name, not too much detail)</li>
-<li><code>POST /zoos</code>: Create a new Zoo</li>
-<li><code>GET /zoos/ZID</code>: Retrieve an entire Zoo object</li>
-<li><code>PUT /zoos/ZID</code>: Update a Zoo (entire object)</li>
-<li><code>PATCH /zoos/ZID</code>: Update a Zoo (partial object)</li>
-<li><code>DELETE /zoos/ZID</code>: Delete a Zoo</li>
-<li><code>GET /zoos/ZID/animals</code>: Retrieve a listing of Animals (ID and Name).</li>
-<li><code>GET /animals</code>: List all Animals (ID and Name).</li>
-<li><code>POST /animals</code>: Create a new Animal</li>
-<li><code>GET /animals/AID</code>: Retrieve an Animal object</li>
-<li><code>PUT /animals/AID</code>: Update an Animal (entire object)</li>
-<li><code>PATCH /animals/AID</code>: Update an Animal (partial object)</li>
-<li><code>GET /animal_types</code>: Retrieve a listing (ID and Name) of all Animal Types</li>
-<li><code>GET /animal_types/ATID</code>: Retrieve an entire Animal Type object</li>
-<li><code>GET /employees</code>: Retrieve an entire list of Employees</li>
-<li><code>GET /employees/EID</code>: Retreive a specific Employee</li>
-<li><code>GET /zoos/ZID/employees</code>: Retrieve a listing of Employees (ID and Name) who work at this Zoo</li>
-<li><code>POST /employees</code>: Create a new Employee</li>
-<li><code>POST /zoos/ZID/employees</code>: Hire an Employee at a specific Zoo</li>
-<li><code>DELETE /zoos/ZID/employees/EID</code>: Fire an Employee from a specific Zoo</li>
-</ul>
-<h2 id="Resourse"><a href="#Resourse" class="headerlink" title="Resourse"></a>Resourse</h2><p><code>GET: api/v2/users/1</code>   —&gt;  <code>UsersResourse:view</code>  —&gt;  <code>return json {user}</code><br><code>POST: api/v2/users/1</code>   —&gt;  <code>UsersResourse:update</code>  —&gt;  <code>return jsonEndpoints {user}</code><br><code>DELETE: api/v2/users/1</code>   —&gt;  <code>UsersResourse:delete</code>  —&gt;  <code>return json {bool}</code></p>
-<hr>
-<p><code>GET: api/v2/users</code>   —&gt;  <code>UsersResourse:index</code>  —&gt;  <code>return json {userList}</code><br><code>POST: api/v2/users</code>   —&gt;  <code>UsersResourse:create</code>  —&gt;  <code>return json {user}</code><br><code>OPTIONS: api/v2/users</code> —&gt; <code>UsersResourse:options</code> —&gt;  <code>return json {options}</code></p>
-<h2 id="PathParse"><a href="#PathParse" class="headerlink" title="PathParse"></a>PathParse</h2><p><div id="container"></div></p>
-<p><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"></p>
-<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-<script>
-  var gitment = new Gitment({
-    id: '页面 ID', // 可选。默认为 location.href
-    owner: 'jonny-bo', // 可以是你的GitHub用户名，也可以是github id
-    repo: 'jonny-bo.github.io',
-    oauth: {
-      client_id: '1c77e0e89cfbef9d889d',
-      client_secret: 'b1b0d59ca8a7915cffa91f574f3a4ad720086bbd',
-    },
-  })
-  gitment.render('container')
-</script>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/21/composer报proc-open-错误解决方法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="jonny">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/jonny.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="技术宅の二次元">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/21/composer报proc-open-错误解决方法/" itemprop="url">composer报proc_open()错误解决方法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-21T09:25:46+08:00">
-                2017-07-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Composer/" itemprop="url" rel="index">
-                    <span itemprop="name">Composer</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/07/21/composer报proc-open-错误解决方法/" class="leancloud_visitors" data-flag-title="composer报proc_open()错误解决方法">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>刚入手了服务器，安装了环境．在composer安装完成进入项目执行<code>composer install</code>的时候报错，我的服务器内存是1G．</p>
-<p><em>原因由于虚拟机分配的内存太少，而导致没有可用内存打开文件</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">free  -m</div></pre></td></tr></table></figure></p>
-<ul>
-<li><p>结果如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">total used free shared buffers cached</div><div class="line">Mem: 2048 357 1690 0 0 237</div><div class="line">-/+ buffers/cache: 119 1928</div><div class="line">Swap: 0 0 0</div></pre></td></tr></table></figure>
-</li>
-<li><p>解决方法:<br>1 加大虚拟机的内存<br>2 在Linux下的解决方案：<br>3 开启swap：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">/bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=1024</div><div class="line">/sbin/mkswap /var/swap.1</div><div class="line">/sbin/swapon /var/swap.1</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd /var/www</div></pre></td></tr></table></figure>
-<p><div id="container"></div></p>
-<p><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"></p>
-<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-<script>
-  var gitment = new Gitment({
-    id: '页面 ID', // 可选。默认为 location.href
-    owner: 'jonny-bo', // 可以是你的GitHub用户名，也可以是github id
-    repo: 'jonny-bo.github.io',
-    oauth: {
-      client_id: '1c77e0e89cfbef9d889d',
-      client_secret: 'b1b0d59ca8a7915cffa91f574f3a4ad720086bbd',
-    },
-  })
-  gitment.render('container')
-</script>
-          
-        
+    <div class="post-spread">
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
@@ -819,6 +492,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -839,8 +516,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/jonny.jpg"
@@ -902,6 +588,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#symfony学习日常第一章"><span class="nav-number">1.</span> <span class="nav-text">symfony学习日常第一章</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#章节介绍"><span class="nav-number">1.1.</span> <span class="nav-text">章节介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Services服务"><span class="nav-number">1.2.</span> <span class="nav-text">Services服务</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#services-yml"><span class="nav-number">2.</span> <span class="nav-text">services.yml</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Listeners监听器"><span class="nav-number">2.1.</span> <span class="nav-text">Listeners监听器</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1022,10 +724,10 @@
 
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
-  
+
 
   
 
